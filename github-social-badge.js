@@ -1,5 +1,7 @@
 // case-hardened GitHub badge
 // Kent Brewster http://kentbrewster.com
+// http://github.com/kentbrew/github-social-badge/tree/master
+
 ( function() { 
    var trueName = '';
    for (var i = 0; i < 16; i++) { 
