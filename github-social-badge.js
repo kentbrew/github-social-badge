@@ -2,16 +2,16 @@
 // Kent Brewster http://kentbrewster.com
 // http://github.com/kentbrew/github-social-badge/tree/master
 
-( function() { 
+( function() {
    var trueName = '';
-   for (var i = 0; i < 16; i++) { 
-      trueName += String.fromCharCode(Math.floor(Math.random() * 26) + 97); 
+   for (var i = 0; i < 16; i++) {
+      trueName += String.fromCharCode(Math.floor(Math.random() * 26) + 97);
    }
    window[trueName] = {};
    var $ = window[trueName];
    $.d = document;
    $.f = function() {
-      return { 
+      return {
          runFunction : [],
          init : function(target) {
             var theScripts = $.d.getElementsByTagName('SCRIPT');
@@ -31,7 +31,7 @@
                   theScripts[i].parentNode.removeChild(theScripts[i]);
                   break;
                }
-            }         
+            }
          },
          parseJson : function(json) {
             this.parseJson.data = json;
@@ -48,7 +48,7 @@
             }
          },
          loadDefaults : function() {
-            var defaults = { 
+            var defaults = {
                "view" : "projects",
                "user":"davglass",
                "headerText" : " on GitHub",
@@ -56,7 +56,7 @@
                "width" : 300,
                "background" : "white",
                "border" : "1px solid black",
-               "headerBackground" : "#ffa", 
+               "headerBackground" : "#ffa",
                "headerColor" : "#000",
                "evenBackground" : "#fff",
                "oddBackground" : "#eee",
@@ -101,12 +101,12 @@
                } else {
                   ieRules += selector + rules[r];
                }
-            } 
+            }
             if (window.createPopup) { s.cssText = ieRules; }
          },
          buildStructure : function() {
             $.s = $.d.createElement('DIV');
-            $.s.className = trueName;         
+            $.s.className = trueName;
             $.s.h = $.d.createElement('H3');
             $.s.h.a = $.d.createElement('A');
             $.s.h.a.innerHTML = $.a.user + $.a.headerText;
@@ -154,21 +154,21 @@
             a.href = 'http://kentbrewster.com/github-badge';
             $.s.f.appendChild(a);
             $.s.appendChild($.s.f);
-            
-            
+
+
             $.f.getProjects();
             $.f.getFollowing();
          },
          getFollowing : function() {
             $.s.h.className = 'loading';
-            $.s.d.innerHTML = ''; 
+            $.s.d.innerHTML = '';
             if (!$.f.runFunction) { $.f.runFunction = []; }
             var n = $.f.runFunction.length;
             var id = trueName + '.f.runFunction[' + n + ']';
             $.f.runFunction[n] = function(r) {
                delete($.f.runFunction[n]);
                $.f.removeScript(id);
-               $.f.renderFollowing(r); 
+               $.f.renderFollowing(r);
             };
             var url = 'http://pipes.yahoo.com/pipes/pipe.run?_id=CO_7rOXz3RGwtBTQZMag4A&_render=json&u=' + $.a.user +'&_callback=' + id;
             $.f.runScript(url, id);
@@ -192,9 +192,9 @@
                   };
                   $.s.d.appendChild(a);
                }
-               $.s.f.f.innerHTML = 'following (' + u.length + ')'; 
+               $.s.f.f.innerHTML = 'following (' + u.length + ')';
             } else {
-               $.s.f.f.innerHTML = 'not following anyone' 
+               $.s.f.f.innerHTML = 'not following anyone'
             }
          },
          getProjects : function() {
@@ -206,17 +206,17 @@
             $.f.runFunction[n] = function(r) {
                delete($.f.runFunction[n]);
                $.f.removeScript(id);
-               $.f.renderProjects(r.user); 
+               $.f.renderProjects(r.user);
             };
             var url = 'http://github.com/api/v1/json/' + $.a.user + '?callback=' + id
             $.f.runScript(url, id);
          },
-         renderProjects: function(z) { 
+         renderProjects: function(z) {
             $.s.h.className = '';
             $.s.h.a.innerHTML = $.a.user;
             if (z.name) {
                $.s.h.a.innerHTML = z.name;
-            } 
+            }
             $.s.h.a.innerHTML += ' ' + $.a.headerText;
             if (z.repositories && z.repositories.length) {
                var r = z.repositories;
@@ -262,9 +262,9 @@
                   }
                   $.s.r.appendChild(li);
                }
-               $.s.f.p.innerHTML = 'projects (' + r.length + ')'; 
+               $.s.f.p.innerHTML = 'projects (' + r.length + ')';
             } else {
-               $.s.f.p.innerHTML = 'no projects' 
+               $.s.f.p.innerHTML = 'no projects'
             }
          },
          runScript : function(url, id) {
@@ -279,7 +279,7 @@
                var s = $.d.getElementById(id);
                s.parentNode.removeChild(s);
             }
-         }         
+         }
       };
    }();
 //   var thisScript = /^https?:\/\/[^\/]*yourdomain.com\/yourscript.js$/;
